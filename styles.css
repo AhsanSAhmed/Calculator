@@ -6,10 +6,15 @@
 }
 
 #screen{
-    height: 175px;
-    width: 400px;
-    outline: solid black 2px;
+    height: 135px;
+    width: 370px;
+    border: solid black 2px;
+    border-radius: 10px;
     background-color: white;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 15px;
 }
 
 body{
@@ -46,6 +51,7 @@ button{
     width: 175px;
     margin: 10px;
     border-radius: 10px;
+    background-color: lightcoral;
 }
 
 .inputbtn{
@@ -55,7 +61,10 @@ button{
     border-radius: 10px;
 }
 
-button:active{
+.controlbtn:active{
+    background-color: rgb(237, 60, 60);
+}
+.inputbtn:active{
     background-color: rgb(38, 150, 219);
 }
 
