@@ -39,6 +39,7 @@ button{
     background-color: lightskyblue;
     font-weight: bold;
     font-family: Lato;
+    font-size: large;
 }
 .controlbtn{
     height: 50px;
@@ -52,5 +53,9 @@ button{
     width: 75px;
     margin: 10px;
     border-radius: 10px;
+}
+
+button:active{
+    background-color: rgb(38, 150, 219);
 }
 
