@@ -2,6 +2,7 @@ let varA,varB,opA;
 let deNumber=0;
 let numArray=[];
 let operatorClicked=false;
+let dotClicked=false;
 
 const screen=document.querySelector("#screen");
 const screenText=document.createElement("div");
@@ -26,6 +27,8 @@ const equalbtn=document.querySelector("#equalSign");
 equalbtn.addEventListener("click",evaluate);
 const dotbtn=document.querySelector("#dot");
 dotbtn.addEventListener("click",displayNumbers);
+
+
 
 function Addition(a,b)
 {
@@ -56,6 +59,7 @@ function Division(a,b)
 
 function clearScreen()
 {
+    dotClicked=false;
     deNumber=0;
     numArray=[];
     varA=0;
@@ -68,7 +72,12 @@ function clearScreen()
 
 function deleteNumber()
 {
-    numArray.pop();
+    
+    let x=numArray.pop();
+    if(x=='.')
+    {
+        dotClicked=false;
+    }
     screen.textContent="";
     screenText.textContent=numArray.reduce((target,val)=>{return target+val},"");
     screen.appendChild(screenText);
@@ -79,6 +88,10 @@ function deleteNumber()
 
 function displayNumbers(e)
 {
+    
+    if(dotClicked && e.target.textContent=='.')
+        return;
+
     numArray.push(e.target.textContent);
     
     screen.textContent="";
@@ -86,6 +99,10 @@ function displayNumbers(e)
     screen.appendChild(screenText);
 
     deNumber=Number(numArray.reduce((target,val)=>{return target+val},""));
+    if(e.target.textContent=='.')
+    {
+        dotClicked=true;
+    }
 }
 
 function operate(e)
@@ -98,6 +115,7 @@ function operate(e)
     if(operatorClicked)
         evaluate();
     
+    dotClicked=false;
     opA=e.target.textContent;
     operatorClicked=true;
 }
@@ -141,9 +159,9 @@ function evaluate(e)
             screen.appendChild(screenText);
             break;
         default:
-            operatorClicked=false;
             break;
     }
+    opA='';
     console.log("this is A",varA);
     console.log("this is B",varB);
 }
